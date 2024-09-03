@@ -169,7 +169,7 @@ function App() {
               <Projects />
             </section>
             <footer className="text-center my-8">
-              <p>© 2024 Teppo Lappalainen. All rights reserved.</p>
+              <p>© 2024 Teppo Lappalainen</p>
             </footer>
           </main>
         </div>

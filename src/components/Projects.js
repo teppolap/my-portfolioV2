@@ -40,16 +40,9 @@ const projects = [
   {
     title: 'My Web Portfolio',
     description: 'Source code for my newest portfolio',
-    link: '#',
+    link: 'https://github.com/teppolap/my-portfolioV2',
     image: project5Image, 
     technologies: ['TailwindCSS', 'React'],
-  },
-  {
-    title: 'Projektin nimi',
-    description: 'Joku projekti mikä tekee jotakin.',
-    link: '#',
-    image: 'https://via.placeholder.com/150', 
-    technologies: ['JavaScript', 'React', 'Node.js'],
   },
 ];
 
