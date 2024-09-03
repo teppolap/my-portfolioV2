@@ -60,7 +60,6 @@ const Projects = () => {
             <div className="flex flex-col md:flex-row items-center">
               <img
                 src={project.image}
-                alt={`Image of ${project.title}`}
                 className="w-full md:w-32 h-24 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
               />
               <div className="flex-1 text-center md:text-left">
