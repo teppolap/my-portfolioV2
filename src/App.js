@@ -116,7 +116,7 @@ function App() {
             {/* View Full Resume Button */}
             <div className="mt-8 px-4 lg:px-8 flex justify-center lg:justify-start">
               <a
-                href="/cv-teppo-lappalainen.pdf"
+                href="/cv-teppo-lappalainen2024.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-transparent text-white border border-white px-4 py-2 rounded-md transition-colors hover:bg-white hover:text-gray-900"
