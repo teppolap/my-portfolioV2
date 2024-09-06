@@ -3,10 +3,14 @@ import { FaLinkedin, FaGithub, FaGitlab } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import './App.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [glowClass, setGlowClass] = useState('light-glow');
 
+  // Track the active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
@@ -31,6 +35,36 @@ function App() {
     };
   }, []);
 
+  // Handle custom cursor movement
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      const cursorX = event.clientX;
+      const cursorY = event.clientY;
+
+      // Update cursor position
+      setCursorPosition({ x: cursorX, y: cursorY });
+
+      // Calculate distance from the center of the viewport
+      const distanceX = Math.abs(window.innerWidth / 2 - cursorX);
+      const distanceY = Math.abs(window.innerHeight / 2 - cursorY);
+      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+      // Adjust the glow intensity based on distance from center
+      if (distance < 200) {
+        setGlowClass('intense-glow');
+      } else if (distance < 400) {
+        setGlowClass('medium-glow');
+      } else {
+        setGlowClass('light-glow');
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const navItemClass = (section) => {
     return activeSection === section
       ? 'w-16 bg-slate-200'
@@ -45,6 +79,16 @@ function App() {
 
   return (
     <div className="dark">
+      {/* Custom glowing cursor */}
+      <div
+        className={`custom-cursor ${glowClass}`}
+        style={{
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+          transform: `translate(-50%, -50%)`,
+        }}
+      ></div>
+
       <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-gray-100">
         {/* Centered Container */}
         <div className="flex flex-col lg:flex-row lg:justify-center lg:items-start w-full lg:w-4/5 mx-auto">

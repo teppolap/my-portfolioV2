@@ -28,6 +28,23 @@
   color: #61dafb;
 }
 
+/* Glowing Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 1000px; 
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(0, 149, 255, 0.082) 0%,   
+    rgba(0, 149, 255, 0) 50%,   
+    rgba(0, 149, 255, 0) 100%     
+  );
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease;
+  mix-blend-mode: screen;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
