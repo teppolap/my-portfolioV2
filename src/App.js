@@ -29,27 +29,23 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger on initial render
+    handleScroll(); 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Handle custom cursor movement
   useEffect(() => {
     const handleMouseMove = (event) => {
       const cursorX = event.clientX;
       const cursorY = event.clientY;
 
-      // Update cursor position
       setCursorPosition({ x: cursorX, y: cursorY });
 
-      // Calculate distance from the center of the viewport
       const distanceX = Math.abs(window.innerWidth / 2 - cursorX);
       const distanceY = Math.abs(window.innerHeight / 2 - cursorY);
       const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
-      // Adjust the glow intensity based on distance from center
       if (distance < 200) {
         setGlowClass('intense-glow');
       } else if (distance < 400) {
