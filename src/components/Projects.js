@@ -2,10 +2,9 @@ import React from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import project1Image from '../assets/project-1-image.png';
 import project2Image from '../assets/project-2-image.png';
-import project3Image from '../assets/project-3-image.png';
 import project4Image from '../assets/project-4-image.png';
 import project5Image from '../assets/project-5-image.png';
-
+import project6Image from '../assets/project-6-image.png';
 
 
 const projects = [
@@ -17,18 +16,18 @@ const projects = [
     technologies: ['Typescript', 'JavaScript', 'React', 'Node.js', 'CSS'],
   },
   {
+    title: 'Event Management App',
+    description: 'Event Manager is a full-stack application that helps users organize and manage their events. Built with React and styled using Tailwind CSS, the frontend seamlessly connects to a backend powered by Node.js and Express. Users can add, edit, delete, and set reminders for events.',
+    link: 'https://github.com/teppolap/event-management-app',
+    image: project6Image,
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB'],
+  },
+  {
     title: 'Mobile Movies App',
     description: 'Build a movies mobile app with React Native CLI development by working with built-in and custom components, managing state and props, handling events, and passing data between components. Practiced navigating between screens, applying styles, handling touchable components, and loading and parsing JSON data.',
     link: 'https://gitlab.labranet.jamk.fi/AB7340/mobile-exercises/-/tree/main/Movies2?ref_type=heads',
     image: project2Image,
     technologies: ['React Native', 'JavaScript', 'Node.js'],
-  },
-  {
-    title: 'Weather Widget',
-    description: 'Created a Weather Widget for android phones using kotlin and Android Studio.',
-    link: 'https://gitlab.labranet.jamk.fi/AB7340/android-exercises/-/tree/main/E14WeatherWidget?ref_type=heads',
-    image: project3Image,
-    technologies: ['Kotlin', 'Android Studio'],
   },
   {
     title: "Men's  Olympics Ice hockey Database 2022",
