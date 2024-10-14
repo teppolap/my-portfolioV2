@@ -98,7 +98,7 @@ function App() {
                 Junior Fullstack Developer
               </h2>
               <p className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none">
-                Fourth year ICT engineering student, specialized in programming
+                Fourth-year ICT engineering student with a focus on the MERN stack.
               </p>
             </div>
 
