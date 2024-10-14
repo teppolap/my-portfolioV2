@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaGitlab } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaGitlab, FaMapPin} from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
@@ -97,6 +97,10 @@ function App() {
               <h2 className="mt-3 text-base font-medium tracking-tight text-slate-200 sm:text-lg">
                 Junior Fullstack Developer
               </h2>
+              <p className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none">
+                <FaMapPin className="inline-block mr-2" />
+                Jyväskylä, Finland
+              </p>
               <p className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none">
                 Fourth-year ICT engineering student with a focus on the MERN stack.
               </p>
