@@ -4,10 +4,10 @@ const About = () => {
   return (
     <section id="about" className="my-12">
       <div className="max-w-xl mx-auto text-center">
-        <p className="text-gray-700 dark:text-gray-300 transition-opacity duration-700">
-        A fourth year ICT student at Jyväskylä University of Applied Sciences specialising in programming. 
-        Possess good problem-solving skills and ability to adapt in different situations. Able to act and work in different teams, 
-        using his strong social skills. In his free time, likes to go outdoors, play sports and play video games to relax and spend time.
+        <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700">
+          A fourth-year ICT student at Jyväskylä University of Applied Sciences specializing in programming, aiming to improve as a full-stack developer. 
+          Possesses strong problem-solving skills and the ability to adapt in various situations. 
+          Able to work effectively in teams, leveraging strong social skills. In free time, enjoys outdoor activities, playing sports, and relaxing with video games.
         </p>
       </div>
     </section>
