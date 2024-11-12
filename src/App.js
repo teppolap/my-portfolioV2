@@ -4,6 +4,8 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import './App.css';
+import profilePic from './assets/profile-pic.png';
+
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
@@ -91,6 +93,11 @@ function App() {
           {/* Left Side Header */}
           <header className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-24 bg-gray-900 flex-shrink-0">
             <div className="text-center lg:text-left px-4 py-6 lg:px-8 lg:py-8 flex flex-col items-center lg:items-start">
+                <img
+                src={profilePic}
+                alt="Teppo Lappalainen"
+                className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-4"
+              />
               <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
                 Teppo Lappalainen
               </h1>
@@ -160,7 +167,7 @@ function App() {
             {/* View Full Resume Button */}
             <div className="mt-8 px-4 lg:px-8 flex justify-center lg:justify-start">
               <a
-                href="/cv-teppo-lappalainen2024.pdf"
+                href="/teppo-lappalainen-cv-en.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-transparent text-white border border-white px-4 py-2 rounded-md transition-colors hover:bg-white hover:text-gray-900"
