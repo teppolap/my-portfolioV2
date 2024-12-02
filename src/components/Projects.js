@@ -23,11 +23,11 @@ const projects = [
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB'],
   },
   {
-    title: 'Mobile Movies App',
-    description: 'Build a movies mobile app with React Native CLI development by working with built-in and custom components, managing state and props, handling events, and passing data between components. Practiced navigating between screens, applying styles, handling touchable components, and loading and parsing JSON data.',
-    link: 'https://gitlab.labranet.jamk.fi/AB7340/mobile-exercises/-/tree/main/Movies2?ref_type=heads',
+    title: 'NextJS Auth App',
+    description: 'The front-end of the application is built with Next.js and TailwindCSS and uses Clerk for user authentication. Backend is powered by MongoDB and Mongoose for elegant MongoDB object modeling in Node.js.',
+    link: 'https://github.com/teppolap/next-auth-app',
     image: project2Image,
-    technologies: ['React Native', 'JavaScript', 'Node.js'],
+    technologies: ['NextJS', 'JavaScript', 'Node.js', 'Mongoose', 'Express', 'MongoDB', 'Clerk', 'TailwindCSS'],
   },
   {
     title: "Men's  Olympics Ice hockey Database 2022",
@@ -48,6 +48,9 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" className="my-12">
+      <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6">
+        Projects
+      </h1>
       <div className="grid grid-cols-1 gap-8 max-w-xl mx-auto">
         {projects.map((project, index) => (
           <a 
@@ -59,7 +62,8 @@ const Projects = () => {
             <div className="flex flex-col md:flex-row items-center">
               <img
                 src={project.image}
-                className="w-full md:w-32 h-24 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
+                alt={`Screenshot of ${project.title}`}
+                className="w-full md:w-48 h-40 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
               />
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl text-slate-300 font-normal mb-2 transition-colors group-hover:text-tech-text-color">
@@ -79,7 +83,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-              <FaExternalLinkAlt className="text-indigo-600 text-tech-text-color my-4" />
+              <FaExternalLinkAlt className="text-indigo-600 text-tech-text-color my-4 mx-2" />
             </div>
           </a>
         ))}
