@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaGitlab, FaMapPin} from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaGitlab, FaMapPin, FaSpinner } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import './App.css';
 import profilePic from './assets/profile-pic.png';
 
-
 function App() {
   const [activeSection, setActiveSection] = useState('about');
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [glowClass, setGlowClass] = useState('light-glow');
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   // Track the active section on scroll
   useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
+    handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -75,6 +75,10 @@ function App() {
       : 'text-slate-500 group-hover:text-slate-200 transition-colors';
   };
 
+  const handleImageLoad = () => {
+    setIsImageLoading(false);
+  };
+
   return (
     <div className="dark">
       {/* Custom glowing cursor */}
@@ -93,11 +97,23 @@ function App() {
           {/* Left Side Header */}
           <header className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-24 bg-gray-900 flex-shrink-0">
             <div className="text-center lg:text-left px-4 py-6 lg:px-8 lg:py-8 flex flex-col items-center lg:items-start">
-              <img
-              src={profilePic}
-              alt="Teppo Lappalainen"
-              className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-4"
-              />
+              {/* Image container */}
+              <div className="relative">
+                {/* Loading spinner */}
+                {isImageLoading && (
+                  <div className="absolute inset-0 flex justify-center items-center">
+                    <FaSpinner className="animate-spin text-white text-4xl" />
+                  </div>
+                )}
+                {/* Profile image */}
+                <img
+                  src={profilePic}
+                  alt="Teppo Lappalainen"
+                  onLoad={handleImageLoad}
+                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-4"
+                />
+              </div>
+
               <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
                 Teppo Lappalainen
               </h1>
