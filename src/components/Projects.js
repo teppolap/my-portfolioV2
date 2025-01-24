@@ -1,19 +1,19 @@
 import React from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import project1Image from '../assets/project-1-image.png';
 import project2Image from '../assets/project-2-image.png';
 import project4Image from '../assets/project-4-image.png';
 import project5Image from '../assets/project-5-image.png';
 import project6Image from '../assets/project-6-image.png';
+import project7Image from '../assets/project-7-image.png';
 
 
 const projects = [
   {
-    title: 'TypeScript Movies App ',
-    description: 'Build a Movies App which load JSON data and show loaded data in a React application. This movie application loads data from the Movie DB.',
-    link: 'https://gitlab.labranet.jamk.fi/AB7340/wuip-exercises/-/tree/main/typescript-movies-app?ref_type=heads',
-    image: project1Image,
-    technologies: ['Typescript', 'JavaScript', 'React', 'Node.js', 'CSS'],
+    title: 'E-Commerce Site | Topshelf Market',
+    description: 'Built a E-Commerce Site with features secure authentication with NextAuth.js, dynamic product management using Next.js and Sanity CMS, a Redux-powered shopping cart, custom APIs for checkout, responsive design with Tailwind CSS and webhook support with Stripe for handling external events like payment confirmations.',
+    link: 'https://github.com/teppolap/ecommercesite',
+    image: project7Image,
+    technologies: ['NextJS', 'Typescript', 'Redux', 'TailwindCSS', 'Sanity CMS', 'Stripe', 'NextAuth.js'],
   },
   {
     title: 'Event Management App',
@@ -51,19 +51,19 @@ const Projects = () => {
       <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6">
         Projects
       </h1>
-      <div className="grid grid-cols-1 gap-8 max-w-xl mx-auto">
+      <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
         {projects.map((project, index) => (
           <a 
             key={index} 
             href={project.link} 
-            className="relative bg-transparent dark:bg-transparent p-6 rounded-lg shadow-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 block group"
+            className="relative bg-transparent dark:bg-transparent p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 groupblock group"
             aria-label={`View ${project.title}`}
           >
             <div className="flex flex-col md:flex-row items-center">
               <img
                 src={project.image}
                 alt={`Screenshot of ${project.title}`}
-                className="w-full md:w-48 h-40 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
+                className="w-full md:w-64 h-48 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
               />
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl text-slate-300 font-normal mb-2 transition-colors group-hover:text-tech-text-color">

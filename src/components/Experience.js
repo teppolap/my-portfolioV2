@@ -51,7 +51,7 @@ const Experience = () => {
         {experiences.map((experience, index) => (
           <div
             key={index}
-            className="relative bg-transparent dark:bg-transparent p-6 rounded-lg shadow-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            className="relative bg-transparent dark:bg-transparent p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 groupblock group"
           >
             <div className="flex flex-col md:flex-row items-start">
               {/* Work Period on the left */}
