@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -40,9 +34,19 @@
     rgba(0, 149, 255, 0) 100%     
   );
   pointer-events: none;
-  z-index: 10000;
+  z-index: 99999;
   transition: transform 0.15s ease;
   mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+}
+
+
+.custom-cursor.light-glow {
+  background: radial-gradient(circle, 
+    rgba(0, 149, 255, 0.082) 0%,   
+    rgba(0, 149, 255, 0) 50%,   
+    rgba(0, 149, 255, 0) 100%     
+  );
 }
 
 @keyframes App-logo-spin {

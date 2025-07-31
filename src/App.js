@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaGitlab, FaMapPin, FaSpinner } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaGitlab, FaMapPin } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
@@ -10,7 +11,6 @@ function App() {
   const [activeSection, setActiveSection] = useState('about');
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [glowClass, setGlowClass] = useState('light-glow');
-  const [isImageLoading, setIsImageLoading] = useState(true);
 
   // Track the active section on scroll
   useEffect(() => {
@@ -44,24 +44,19 @@ function App() {
 
       setCursorPosition({ x: cursorX, y: cursorY });
 
-      const distanceX = Math.abs(window.innerWidth / 2 - cursorX);
-      const distanceY = Math.abs(window.innerHeight / 2 - cursorY);
-      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+      const speed = Math.sqrt(
+        Math.pow(cursorX - cursorPosition.x, 2) + 
+        Math.pow(cursorY - cursorPosition.y, 2)
+      );
 
-      if (distance < 200) {
-        setGlowClass('intense-glow');
-      } else if (distance < 400) {
-        setGlowClass('medium-glow');
-      } else {
-        setGlowClass('light-glow');
-      }
+      setGlowClass('light-glow');
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [cursorPosition.x, cursorPosition.y]);
 
   const navItemClass = (section) => {
     return activeSection === section
@@ -75,19 +70,90 @@ function App() {
       : 'text-slate-500 group-hover:text-slate-200 transition-colors';
   };
 
-  const handleImageLoad = () => {
-    setIsImageLoading(false);
+
+  // Animation variants
+  const pageVariants = {
+    initial: { opacity: 0 },
+    in: { opacity: 1 },
+    out: { opacity: 0 }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const navVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1,
+        delayChildren: 0.8,
+      },
+    },
+  };
+
+  const navItemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <div className="dark">
+    <motion.div 
+      className="dark"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+    >
       {/* Custom glowing cursor */}
       <div
         className={`custom-cursor ${glowClass}`}
         style={{
           left: `${cursorPosition.x}px`,
           top: `${cursorPosition.y}px`,
-          transform: `translate(-50%, -50%)`,
         }}
       ></div>
 
@@ -95,44 +161,68 @@ function App() {
         {/* Centered Container */}
         <div className="flex flex-col lg:flex-row lg:justify-center lg:items-start w-full lg:w-4/5 mx-auto">
           {/* Left Side Header */}
-          <header className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-24 bg-gray-900 flex-shrink-0">
+          <motion.header 
+            className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-12 bg-gray-900 flex-shrink-0"
+            variants={headerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="text-center lg:text-left px-4 py-6 lg:px-8 lg:py-8 flex flex-col items-center lg:items-start">
               {/* Image container */}
-              <div className="relative">
-                {/* Loading spinner */}
-                {isImageLoading && (
-                  <div className="absolute inset-0 flex justify-center items-center">
-                    <FaSpinner className="animate-spin text-white text-4xl" />
-                  </div>
-                )}
+              <motion.div 
+                className="relative"
+                variants={imageVariants}
+              >
                 {/* Profile image */}
-                <img
+                <motion.img
                   src={profilePic}
                   alt="Teppo Lappalainen"
-                  onLoad={handleImageLoad}
-                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 mb-4"
+                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-60 lg:h-65 rounded-t-lg mb-4 backdrop-blur-sm"
+                  style={{
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)"
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 35px 60px -15px rgba(0, 0, 0, 0.9)",
+                    transition: { duration: 0.3 }
+                  }}
                 />
-              </div>
+              </motion.div>
 
-              <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl">
+              <motion.h1 
+                className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl"
+                variants={itemVariants}
+              >
                 Teppo Lappalainen
-              </h1>
-              <h2 className="mt-3 text-base font-medium tracking-tight text-slate-200 sm:text-lg">
+              </motion.h1>
+              <motion.h2 
+                className="mt-3 text-base font-medium tracking-tight text-slate-200 sm:text-lg"
+                variants={itemVariants}
+              >
                 Junior Fullstack Developer
-              </h2>
-              <p className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none">
+              </motion.h2>
+              <motion.p 
+                className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
+                variants={itemVariants}
+              >
                 <FaMapPin className="inline-block mr-2" />
                 Jyväskylä, Finland
-              </p>
-              <p className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none">
-                Fourth-year ICT engineering student with a focus on the MERN stack.
-              </p>
+              </motion.p>
+              <motion.p 
+                className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
+                variants={itemVariants}
+              >
+                Fourth year ICT engineering student specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
+              </motion.p>
             </div>
 
             {/* Vertical Navigation (Hidden on Mobile) */}
-            <nav className="hidden lg:block mt-8 px-4 lg:px-8">
+            <motion.nav 
+              className="hidden lg:block mt-8 px-4 lg:px-8"
+              variants={navVariants}
+            >
               <ul className="space-y-4 flex lg:flex-col justify-center">
-                <li>
+                <motion.li variants={navItemVariants}>
                   <a
                     href="#about"
                     className="group flex items-center transition-colors"
@@ -146,8 +236,8 @@ function App() {
                       About
                     </span>
                   </a>
-                </li>
-                <li>
+                </motion.li>
+                <motion.li variants={navItemVariants}>
                   <a
                     href="#experience"
                     className="group flex items-center transition-colors"
@@ -161,8 +251,8 @@ function App() {
                       Experience
                     </span>
                   </a>
-                </li>
-                <li>
+                </motion.li>
+                <motion.li variants={navItemVariants}>
                   <a
                     href="#projects"
                     className="group flex items-center transition-colors"
@@ -176,12 +266,15 @@ function App() {
                       Projects
                     </span>
                   </a>
-                </li>
+                </motion.li>
               </ul>
-            </nav>
+            </motion.nav>
 
             {/* View Full Resume Button */}
-            <div className="mt-8 px-4 lg:px-8 flex justify-center lg:justify-start">
+            <motion.div 
+              className="mt-4 px-4 lg:px-8 flex justify-center lg:justify-start"
+              variants={itemVariants}
+            >
               <a
                 href="/teppo-lappalainen-cv-en.pdf"
                 target="_blank"
@@ -190,42 +283,65 @@ function App() {
               >
                 View Full Résumé
               </a>
-            </div>
+            </motion.div>
 
             {/* Social Media Links */}
-            <div className="mt-8 flex justify-center lg:justify-start space-x-4 px-4 lg:px-10">
-              <a
+            <motion.div 
+              className="mt-4 flex justify-center lg:justify-start space-x-4 px-4 lg:px-10"
+              variants={itemVariants}
+            >
+              <motion.a
                 href="https://www.linkedin.com/in/teppo-lappalainen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-colors"
+                className="text-white hover:text-tech-text-color transition-none"
                 aria-label="LinkedIn"
+                whileHover={{ 
+                  scale: 1.2,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.9 }}
               >
                 <FaLinkedin size={24} />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://github.com/teppolap"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-colors"
+                className="text-white hover:text-tech-text-color transition-none"
                 aria-label="GitHub"
+                whileHover={{ 
+                  scale: 1.2,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.9 }}
               >
                 <FaGithub size={24} />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="https://gitlab.labranet.jamk.fi/users/AB7340"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-colors"
+                className="text-white hover:text-tech-text-color transition-none"
                 aria-label="GitLab"
+                whileHover={{ 
+                  scale: 1.2,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.9 }}
               >
                 <FaGitlab size={24} />
-              </a>
-            </div>
-          </header>
+              </motion.a>
+            </motion.div>
+          </motion.header>
 
           {/* Right Side Content */}
-          <main className="w-full lg:w-1/2 pt-24 lg:pt-24 lg:pl-8 bg-gray-900">
+          <motion.main 
+            className="w-full lg:w-1/2 pt-24 lg:pt-24 lg:pl-8 bg-gray-900"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
             <section id="about" className="pt-16 md:pt-0">
               <About />
             </section>
@@ -235,13 +351,19 @@ function App() {
             <section id="projects">
               <Projects />
             </section>
-            <footer className="text-center my-8">
-              <p>© 2024 Teppo Lappalainen</p>
-            </footer>
-          </main>
+            <motion.footer 
+              className="text-center my-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p>© 2025 Teppo Lappalainen</p>
+            </motion.footer>
+          </motion.main>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

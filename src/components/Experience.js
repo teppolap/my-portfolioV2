@@ -1,6 +1,18 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const experiences = [
+  {
+    title: 'FullStack Developer Intern',
+    company: 'MyHomesID',
+    period: '03/2025-08/2025',
+    description: [
+      'Developed and implemented multi-language support for authentication pages using Angular framework i18n and XLIFF system',
+      'Built secure two-factor email authentication system utilizing AWS Lambda, SES, CDK, and cloud infrastructure',
+      'Integrated new Stripe APIs for seamless payment processing and transaction management',
+      'Collaborated on full-stack development using Angular, TypeScript, AWS services, and Git version control',
+    ],
+  },
   {
     title: 'Warehouse Worker',
     company: 'Tokmanni',
@@ -25,59 +37,150 @@ const experiences = [
     company: 'Inex Partners Oy',
     period: '02/2021-08/2021 And 04/2019-09/2019',
     description: [
-      'collection of products',
+      'Collection of products',
       'Sound collection',
       'Light collection',
       'Repackaging',
     ],
   },
-  {
-    title: 'Cemetery Summer Worker',
-    company: 'Parish',
-    period: '07/2018 - 08/2018',
-    description: [
-      'Care tasks and maintenance of the cemetery',
-    ],
-  },
 ];
 
 const Experience = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
+  const timelineVariants = {
+    hidden: { scaleY: 0 },
+    visible: {
+      scaleY: 1,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.5,
+      },
+    },
+  };
+
+  const circleVariants = {
+    hidden: { 
+      scale: 0,
+      opacity: 0 
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        delay: 0.8,
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
   return (
     <section id="experience" className="my-12">
-      <h1 className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6">
+      <motion.h1 
+        className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6"
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         Working Experience
-      </h1>
-      <div className="grid grid-cols-1 gap-8 max-w-xl mx-auto">
-        {experiences.map((experience, index) => (
-          <div
-            key={index}
-            className="relative bg-transparent dark:bg-transparent p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 groupblock group"
-          >
-            <div className="flex flex-col md:flex-row items-start">
-              {/* Work Period on the left */}
-              <div className="md:w-1/3 text-left text-slate-400 font-light mb-2 my-1 md:mb-0 text-sm">
-                {experience.period}
+      </motion.h1>
+      
+      <div className="max-w-4xl mx-auto px-4">
+        <motion.div 
+          className="relative"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {/* Vertical timeline line */}
+          <motion.div 
+            className="absolute left-6 top-0 bottom-0 w-0.5 bg-cyan-400 origin-top"
+            variants={timelineVariants}
+          ></motion.div>
+          
+          {experiences.map((experience, index) => (
+            <motion.div 
+              key={index} 
+              className="relative mb-8"
+              variants={itemVariants}
+            >
+              {/* Timeline circle */}
+              <motion.div 
+                className="absolute left-4 top-2 w-4 h-4 bg-cyan-400 rounded-full z-10"
+                variants={circleVariants}
+              ></motion.div>
+              
+              {/* Content container */}
+              <div className="ml-12 bg-black/20 backdrop-blur-sm rounded-lg p-6 border border-gray-800 hover:border-cyan-400/50 transition-all duration-300">
+                <div className="flex flex-col">
+                  {/* Job title */}
+                  <h3 className="text-xl font-semibold text-white mb-1">
+                    {experience.title}
+                  </h3>
+                  
+                  {/* Company and period */}
+                  <p className="text-cyan-400 text-sm font-medium mb-4">
+                    @{experience.company} | {experience.period}
+                  </p>
+                  
+                  {/* Description bullets */}
+                  <ul className="space-y-2">
+                    {experience.description.map((desc, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="text-gray-300 text-sm leading-relaxed">
+                          {desc}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-
-              {/* Title, Company, and Description on the right */}
-              <div className="md:w-2/3">
-                <h3 className="text-xl text-slate-300 font-normal mb-1 transition-colors group-hover:text-tech-text-color">
-                  {experience.title}
-                </h3>
-                <h4 className="text-md text-slate-400 font-light mb-2">
-                  {experience.company}
-                </h4>
-                <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300">
-                  {experience.description.map((desc, i) => (
-                    <li key={i} className="mb-2">
-                      {desc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
