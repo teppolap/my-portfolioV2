@@ -7,10 +7,10 @@ const experiences = [
     company: 'MyHomesID',
     period: '03/2025-08/2025',
     description: [
-      'Developed and implemented multi-language support for authentication pages using Angular framework i18n and XLIFF system',
+      'Collaborated on full-stack development using Angular, TypeScript, AWS services, and Git version control',
       'Built secure two-factor email authentication system utilizing AWS Lambda, SES, CDK, and cloud infrastructure',
       'Integrated new Stripe APIs for seamless payment processing and transaction management',
-      'Collaborated on full-stack development using Angular, TypeScript, AWS services, and Git version control',
+      'Developed and implemented multi-language support for authentication pages using Angular framework i18n and XLIFF system',
     ],
   },
   {
