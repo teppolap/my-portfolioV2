@@ -137,7 +137,7 @@ const Projects = () => {
             whileTap={{ scale: 0.98 }}
           >
             <div className="flex flex-col md:flex-row items-center">
-                             <motion.img
+              <motion.img
                  src={project.image}
                  alt={`Screenshot of ${project.title}`}
                  className="w-full md:w-64 h-48 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
@@ -161,7 +161,7 @@ const Projects = () => {
                   className="flex flex-wrap justify-center md:justify-start gap-2"
                   variants={containerVariants}
                 >
-                                     {project.technologies.map((tech, techIndex) => (
+                  {project.technologies.map((tech, techIndex) => (
                      <motion.span
                        key={techIndex}
                        className="text-xs bg-tech-bg-color text-tech-text-color px-2 py-1 rounded-lg font-medium"
@@ -172,7 +172,7 @@ const Projects = () => {
                    ))}
                 </motion.div>
               </div>
-                             <motion.div
+                <motion.div
                  className="text-indigo-600 text-tech-text-color my-4 mx-2"
                >
                  <FaExternalLinkAlt />
