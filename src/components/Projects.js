@@ -116,7 +116,7 @@ const Projects = () => {
       </motion.h1>
       
       <motion.div 
-        className="grid grid-cols-1 gap-8 max-w-4xl mx-auto"
+        className="grid grid-cols-1 gap-10 md:gap-12 max-w-4xl mx-auto px-4"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -126,7 +126,7 @@ const Projects = () => {
           <motion.a 
             key={index} 
             href={project.link} 
-            className="relative bg-transparent dark:bg-transparent p-8 rounded-lg shadow-lg groupblock group"
+            className="relative bg-transparent dark:bg-transparent p-6 md:p-8 rounded-lg shadow-lg groupblock group"
             aria-label={`View ${project.title}`}
             variants={cardVariants}
             whileHover={{ 
@@ -136,47 +136,55 @@ const Projects = () => {
             }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="flex flex-col md:flex-row items-center">
-              <motion.img
-                 src={project.image}
-                 alt={`Screenshot of ${project.title}`}
-                 className="w-full md:w-64 h-48 object-cover mb-4 md:mb-0 md:mr-4 rounded-lg"
-                 variants={imageVariants}
-               />
-              <div className="flex-1 text-center md:text-left">
-                <motion.h3 
-                  className="text-xl text-slate-300 font-normal mb-2 transition-colors group-hover:text-tech-text-color"
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p 
-                  className="text-gray-600 dark:text-gray-300 mb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  {project.description}
-                </motion.p>
-                <motion.div 
-                  className="flex flex-wrap justify-center md:justify-start gap-2"
-                  variants={containerVariants}
-                >
-                  {project.technologies.map((tech, techIndex) => (
-                     <motion.span
-                       key={techIndex}
-                       className="text-xs bg-tech-bg-color text-tech-text-color px-2 py-1 rounded-lg font-medium"
-                       variants={techVariants}
-                     >
-                       {tech}
-                     </motion.span>
-                   ))}
-                </motion.div>
-              </div>
+            <div className="flex flex-col">
+              {/* Project Image */}
+              <motion.div className="relative mb-6">
+                <motion.img
+                  src={project.image}
+                  alt={`Screenshot of ${project.title}`}
+                  className="w-full h-64 md:h-80 object-cover rounded-lg"
+                  variants={imageVariants}
+                />
                 <motion.div
-                 className="text-indigo-600 text-tech-text-color my-4 mx-2"
-               >
-                 <FaExternalLinkAlt />
-               </motion.div>
+                  className="absolute top-4 right-4 text-tech-text-color bg-gray-900/70 p-2 rounded-full backdrop-blur-sm"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <FaExternalLinkAlt />
+                </motion.div>
+              </motion.div>
+
+              {/* Project Title */}
+              <motion.h3 
+                className="text-xl md:text-2xl text-slate-300 font-normal mb-4 transition-colors group-hover:text-tech-text-color"
+              >
+                {project.title}
+              </motion.h3>
+
+              {/* Project Description */}
+              <motion.p 
+                className="text-gray-400 dark:text-gray-300 mb-6 leading-relaxed text-base md:text-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                {project.description}
+              </motion.p>
+
+              {/* Technologies */}
+              <motion.div 
+                className="flex flex-wrap gap-2"
+                variants={containerVariants}
+              >
+                {project.technologies.map((tech, techIndex) => (
+                  <motion.span
+                    key={techIndex}
+                    className="text-xs md:text-sm bg-tech-bg-color text-tech-text-color px-3 py-1.5 rounded-lg font-medium"
+                    variants={techVariants}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </motion.div>
             </div>
           </motion.a>
         ))}

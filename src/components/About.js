@@ -2,12 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaReact, FaHtml5, FaCss3Alt, FaNode, FaGitAlt, FaAws,
-  FaAngular 
+  FaAngular
 } from 'react-icons/fa';
 import { 
   SiTypescript, SiTailwindcss, SiExpress, SiMongodb,
-  SiJavascript, SiPostman
+  SiJavascript, SiPostman, SiOpenai
 } from 'react-icons/si';
+import { Highlighter } from './ui/highlighter';
+import { ReactComponent as CursorLogo } from '../assets/cursor.svg';
+import { ReactComponent as CopilotLogo } from '../assets/copilot-color.svg';
 
 const About = () => {
   const containerVariants = {
@@ -70,7 +73,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            A fourth-year ICT student at Jyväskylä University of Applied Sciences specializing in programming. Aiming to improve as a <strong>full-stack developer</strong>.
+            ICT student at Jyväskylä University of Applied Sciences specializing in programming. Aiming to improve as a <Highlighter action="highlight" color="#1572B6">full-stack developer</Highlighter>.
           </p>
         </motion.div>
         
@@ -79,7 +82,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            Possesses <strong>strong problem-solving skills</strong>, the <strong>ability to adapt</strong> in various situations, and excels in <strong>team collaboration</strong> by leveraging <strong>strong social skills</strong>.
+            Possesses <Highlighter action="underline" color="#00FFFF">strong problem-solving skills</Highlighter>, the <Highlighter action="underline" color="##00FFFF">ability to adapt</Highlighter> in various situations, and excels in <Highlighter action="underline" color="#00FFFF">team collaboration</Highlighter> by leveraging <Highlighter action="underline" color="#00FFFF">strong social skills</Highlighter>.
           </p>
         </motion.div>
         
@@ -88,7 +91,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            In free time, enjoys <strong>outdoor activities</strong>, <strong>playing sports</strong>, and <strong>relaxing with video games</strong>.
+            In free time, enjoys <Highlighter action="underline" color="#00FFFF">outdoor activities</Highlighter>, <Highlighter action="underline" color="#00FFFF">playing sports</Highlighter>, and <Highlighter action="underline" color="#00FFFF">relaxing with video games</Highlighter>.
           </p>
         </motion.div>
 
@@ -149,6 +152,18 @@ const About = () => {
             <div className="flex items-center gap-3">
               <SiPostman className="text-2xl text-[#FF6C37]" />
               <span className="text-gray-300">Postman</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SiOpenai className="text-2xl text-[#10A37F]" />
+              <span className="text-gray-300">ChatGPT</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <CursorLogo className="w-8 h-8 text-[#ffffff]" />
+              <span className="text-gray-300">Cursor</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <CopilotLogo className="w-8 h-8" />
+              <span className="text-gray-300">Copilot</span>
             </div>
           </div>
         </motion.div>

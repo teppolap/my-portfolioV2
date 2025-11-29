@@ -4,13 +4,12 @@ import { FaLinkedin, FaGithub, FaGitlab, FaMapPin } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import LightGlowCursor from './components/ui/light-glow-cursor';
 import './App.css';
 import profilePic from './assets/profile-pic.png';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [glowClass, setGlowClass] = useState('light-glow');
 
   // Track the active section on scroll
   useEffect(() => {
@@ -37,26 +36,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      const cursorX = event.clientX;
-      const cursorY = event.clientY;
-
-      setCursorPosition({ x: cursorX, y: cursorY });
-
-      const speed = Math.sqrt(
-        Math.pow(cursorX - cursorPosition.x, 2) + 
-        Math.pow(cursorY - cursorPosition.y, 2)
-      );
-
-      setGlowClass('light-glow');
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [cursorPosition.x, cursorPosition.y]);
 
   const navItemClass = (section) => {
     return activeSection === section
@@ -149,13 +128,7 @@ function App() {
       variants={pageVariants}
     >
       {/* Custom glowing cursor */}
-      <div
-        className={`custom-cursor ${glowClass}`}
-        style={{
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
-        }}
-      ></div>
+      <LightGlowCursor />
 
       <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-gray-100">
         {/* Centered Container */}
@@ -177,10 +150,7 @@ function App() {
                 <motion.img
                   src={profilePic}
                   alt="Teppo Lappalainen"
-                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-60 lg:h-65 rounded-t-lg mb-4 backdrop-blur-sm"
-                  style={{
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)"
-                  }}
+                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-60 lg:h-65 rounded-full mb-4"
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 35px 60px -15px rgba(0, 0, 0, 0.9)",
@@ -212,7 +182,7 @@ function App() {
                 className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
                 variants={itemVariants}
               >
-                Fourth year ICT engineering student specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
+                ICT engineering student specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
               </motion.p>
             </div>
 
