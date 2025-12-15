@@ -11,7 +11,7 @@ const projects = [
   {
     title: 'E-Commerce Site | Topshelf Market',
     description: 'Built a E-Commerce Site with features secure authentication with NextAuth.js, dynamic product management using Next.js and Sanity CMS, a Redux-powered shopping cart, custom APIs for checkout, responsive design with Tailwind CSS and webhook support with Stripe for handling external events like payment confirmations.',
-    link: 'https://github.com/teppolap/ecommercesite',
+    link: 'https://top-shelf-market.vercel.app/',
     image: project7Image,
     technologies: ['NextJS', 'Typescript', 'Redux', 'TailwindCSS', 'Sanity CMS', 'Stripe', 'NextAuth.js'],
   },
@@ -128,6 +128,8 @@ const Projects = () => {
             href={project.link} 
             className="relative bg-transparent dark:bg-transparent p-6 md:p-8 rounded-lg shadow-lg groupblock group"
             aria-label={`View ${project.title}`}
+            target="_blank"
+            rel="noreferrer"
             variants={cardVariants}
             whileHover={{ 
               scale: 1.02,

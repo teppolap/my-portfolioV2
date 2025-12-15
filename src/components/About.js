@@ -73,7 +73,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            ICT student at Jyväskylä University of Applied Sciences specializing in programming. Aiming to improve as a <Highlighter action="highlight" color="#1572B6">full-stack developer</Highlighter>.
+          I’m a recent graduate with a strong foundation in Fullstack development and a <Highlighter action="underline" color="#f472b6" isView>{' '} clear goal: land a role as a Fullstack developer{' '}</Highlighter> where I can build polished, user-focused web experiences.
           </p>
         </motion.div>
         
@@ -82,7 +82,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            Possesses <Highlighter action="underline" color="#00FFFF">strong problem-solving skills</Highlighter>, the <Highlighter action="underline" color="##00FFFF">ability to adapt</Highlighter> in various situations, and excels in <Highlighter action="underline" color="#00FFFF">team collaboration</Highlighter> by leveraging <Highlighter action="underline" color="#00FFFF">strong social skills</Highlighter>.
+          <Highlighter action="underline" color="#34d399" isView>{' '}I work with modern web stacks{' '}</Highlighter>, building full-stack web applications from responsive user interfaces to scalable backend services and cloud deployments. I focus on writing <Highlighter action="underline" color="#38bdf8" isView>{' '}clean, maintainable code{' '}</Highlighter> and delivering web solutions that are reliable, performant, and easy to use.
           </p>
         </motion.div>
         
@@ -91,7 +91,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-            In free time, enjoys <Highlighter action="underline" color="#00FFFF">outdoor activities</Highlighter>, <Highlighter action="underline" color="#00FFFF">playing sports</Highlighter>, and <Highlighter action="underline" color="#00FFFF">relaxing with video games</Highlighter>.
+          <Highlighter action="underline" color="#c084fc" isView>{' '} I learn fast, communicate clearly, and thrive in collaborative teams{' '}</Highlighter> that ship thoughtfully crafted products.
           </p>
         </motion.div>
 
@@ -99,71 +99,71 @@ const About = () => {
           className="py-6 px-8 mt-8"
           variants={paragraphVariants}
         >
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-4 gap-x-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-y-6 gap-x-4 sm:gap-y-8 sm:gap-x-8">
             <div className="flex items-center gap-3">
-              <FaReact className="text-2xl text-[#61DAFB]" />
-              <span className="text-gray-300">React</span>
+              <FaReact className="shrink-0 text-xl sm:text-2xl text-[#61DAFB]" />
+              <span className="text-gray-200 text-sm sm:text-base">React</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaAngular className="text-2xl text-[#DD0031]" />
-              <span className="text-gray-300">Angular</span>
+              <FaAngular className="shrink-0 text-xl sm:text-2xl text-[#DD0031]" />
+              <span className="text-gray-200 text-sm sm:text-base">Angular</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiTypescript className="text-2xl text-[#3178C6]" />
-              <span className="text-gray-300">TypeScript</span>
+              <SiTypescript className="shrink-0 text-xl sm:text-2xl text-[#3178C6]" />
+              <span className="text-gray-200 text-sm sm:text-base">TypeScript</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaHtml5 className="text-2xl text-[#E34F26]" />
-              <span className="text-gray-300">HTML5</span>
+              <FaHtml5 className="shrink-0 text-xl sm:text-2xl text-[#E34F26]" />
+              <span className="text-gray-200 text-sm sm:text-base">HTML5</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaCss3Alt className="text-2xl text-[#1572B6]" />
-              <span className="text-gray-300">CSS3</span>
+              <FaCss3Alt className="shrink-0 text-xl sm:text-2xl text-[#1572B6]" />
+              <span className="text-gray-200 text-sm sm:text-base">CSS3</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiTailwindcss className="text-2xl text-[#06B6D4]" />
-              <span className="text-gray-300">Tailwind</span>
+              <SiTailwindcss className="shrink-0 text-xl sm:text-2xl text-[#06B6D4]" />
+              <span className="text-gray-200 text-sm sm:text-base">Tailwind</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiJavascript className="text-2xl text-[#F7DF1E]" />
-              <span className="text-gray-300">JavaScript</span>
+              <SiJavascript className="shrink-0 text-xl sm:text-2xl text-[#F7DF1E]" />
+              <span className="text-gray-200 text-sm sm:text-base">JavaScript</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaNode className="text-2xl text-[#339933]" />
-              <span className="text-gray-300">Node.js</span>
+              <FaNode className="shrink-0 text-xl sm:text-2xl text-[#339933]" />
+              <span className="text-gray-200 text-sm sm:text-base">Node.js</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiExpress className="text-2xl text-[#000000]" />
-              <span className="text-gray-300">Express</span>
+              <SiExpress className="shrink-0 text-xl sm:text-2xl text-gray-200" />
+              <span className="text-gray-200 text-sm sm:text-base">Express</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <SiMongodb className="text-2xl text-[#47A248]" />
-              <span className="text-gray-300">MongoDB</span>
+              <SiMongodb className="shrink-0 text-xl sm:text-2xl text-[#47A248]" />
+              <span className="text-gray-200 text-sm sm:text-base">MongoDB</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaGitAlt className="text-2xl text-[#F05032]" />
-              <span className="text-gray-300">Git</span>
+              <FaGitAlt className="shrink-0 text-xl sm:text-2xl text-[#F05032]" />
+              <span className="text-gray-200 text-sm sm:text-base">Git</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaAws className="text-2xl text-[#FF9900]" />
-              <span className="text-gray-300">AWS</span>
+              <FaAws className="shrink-0 text-xl sm:text-2xl text-[#FF9900]" />
+              <span className="text-gray-200 text-sm sm:text-base">AWS</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiPostman className="text-2xl text-[#FF6C37]" />
-              <span className="text-gray-300">Postman</span>
+              <SiPostman className="shrink-0 text-xl sm:text-2xl text-[#FF6C37]" />
+              <span className="text-gray-200 text-sm sm:text-base">Postman</span>
             </div>
             <div className="flex items-center gap-3">
-              <SiOpenai className="text-2xl text-[#10A37F]" />
-              <span className="text-gray-300">ChatGPT</span>
+              <SiOpenai className="shrink-0 text-xl sm:text-2xl text-[#10A37F]" />
+              <span className="text-gray-200 text-sm sm:text-base">ChatGPT</span>
             </div>
             <div className="flex items-center gap-3">
-              <CursorLogo className="w-8 h-8 text-[#ffffff]" />
-              <span className="text-gray-300">Cursor</span>
+              <CursorLogo className="w-8 h-8 shrink-0 fill-white" />
+              <span className="text-gray-200 text-sm sm:text-base">Cursor</span>
             </div>
             <div className="flex items-center gap-3">
-              <CopilotLogo className="w-8 h-8" />
-              <span className="text-gray-300">Copilot</span>
+              <CopilotLogo className="w-8 h-8 shrink-0" />
+              <span className="text-gray-200 text-sm sm:text-base">Copilot</span>
             </div>
           </div>
         </motion.div>

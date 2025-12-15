@@ -130,17 +130,17 @@ function App() {
       {/* Custom glowing cursor */}
       <LightGlowCursor />
 
-      <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-gray-100">
+      <div className="min-h-screen flex flex-col min-[1263px]:flex-row bg-gray-900 text-gray-100">
         {/* Centered Container */}
-        <div className="flex flex-col lg:flex-row lg:justify-center lg:items-start w-full lg:w-4/5 mx-auto">
+        <div className="flex flex-col min-[1263px]:flex-row min-[1263px]:justify-center min-[1263px]:items-start w-full min-[1263px]:w-4/5 mx-auto">
           {/* Left Side Header */}
           <motion.header 
-            className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:py-12 bg-gray-900 flex-shrink-0"
+            className="w-full min-[1263px]:w-1/2 min-[1263px]:sticky min-[1263px]:top-0 min-[1263px]:flex min-[1263px]:flex-col min-[1263px]:justify-between min-[1263px]:py-12 bg-gray-900 flex-shrink-0"
             variants={headerVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="text-center lg:text-left px-4 py-6 lg:px-8 lg:py-8 flex flex-col items-center lg:items-start">
+            <div className="text-center min-[1263px]:text-left px-4 py-6 min-[1263px]:px-8 min-[1263px]:py-8 flex flex-col items-center min-[1263px]:items-start">
               {/* Image container */}
               <motion.div 
                 className="relative"
@@ -150,7 +150,7 @@ function App() {
                 <motion.img
                   src={profilePic}
                   alt="Teppo Lappalainen"
-                  className="w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-60 lg:h-65 rounded-full mb-4"
+                  className="w-50 h-60 sm:w-60 sm:h-72 md:w-70 md:h-72 lg:w-60 lg:h-65 rounded-full mb-4"
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 35px 60px -15px rgba(0, 0, 0, 0.9)",
@@ -182,13 +182,13 @@ function App() {
                 className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
                 variants={itemVariants}
               >
-                ICT engineering student specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
+                ICT engineering graduate specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
               </motion.p>
             </div>
 
             {/* Vertical Navigation (Hidden on Mobile) */}
             <motion.nav 
-              className="hidden lg:block mt-8 px-4 lg:px-8"
+              className="hidden min-[1263px]:block mt-8 px-4 min-[1263px]:px-8"
               variants={navVariants}
             >
               <ul className="space-y-4 flex lg:flex-col justify-center">
@@ -240,9 +240,9 @@ function App() {
               </ul>
             </motion.nav>
 
-            {/* View Full Resume Button */}
+            {/* CTAs grouped so they stay centered on small screens */}
             <motion.div 
-              className="mt-4 px-4 lg:px-8 flex justify-center lg:justify-start"
+              className="mt-6 px-4 min-[1263px]:px-8 flex flex-col items-center gap-4 min-[1263px]:items-start"
               variants={itemVariants}
             >
               <a
@@ -253,61 +253,42 @@ function App() {
               >
                 View Full Résumé
               </a>
-            </motion.div>
-
-            {/* Social Media Links */}
-            <motion.div 
-              className="mt-4 flex justify-center lg:justify-start space-x-4 px-4 lg:px-10"
-              variants={itemVariants}
-            >
-              <motion.a
-                href="https://www.linkedin.com/in/teppo-lappalainen"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-none"
-                aria-label="LinkedIn"
-                whileHover={{ 
-                  scale: 1.2,
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaLinkedin size={24} />
-              </motion.a>
-              <motion.a
-                href="https://github.com/teppolap"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-none"
-                aria-label="GitHub"
-                whileHover={{ 
-                  scale: 1.2,
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaGithub size={24} />
-              </motion.a>
-              <motion.a
-                href="https://gitlab.labranet.jamk.fi/users/AB7340"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-tech-text-color transition-none"
-                aria-label="GitLab"
-                whileHover={{ 
-                  scale: 1.2,
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaGitlab size={24} />
-              </motion.a>
+              <div className="flex justify-center min-[1263px]:justify-start space-x-4 w-full">
+                <motion.a
+                  href="https://www.linkedin.com/in/teppo-lappalainen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-tech-text-color transition-none"
+                  aria-label="LinkedIn"
+                  whileHover={{ 
+                    scale: 1.2,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaLinkedin size={24} />
+                </motion.a>
+                <motion.a
+                  href="https://github.com/teppolap"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-tech-text-color transition-none"
+                  aria-label="GitHub"
+                  whileHover={{ 
+                    scale: 1.2,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaGithub size={24} />
+                </motion.a>
+              </div>
             </motion.div>
           </motion.header>
 
           {/* Right Side Content */}
           <motion.main 
-            className="w-full lg:w-1/2 pt-24 lg:pt-24 lg:pl-8 bg-gray-900"
+            className="w-full min-[1263px]:w-1/2 pt-24 min-[1263px]:pt-24 min-[1263px]:pl-8 bg-gray-900"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
