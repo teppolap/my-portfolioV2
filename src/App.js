@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaGitlab, FaMapPin } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaMapPin } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
@@ -309,7 +309,7 @@ function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p>© 2025 Teppo Lappalainen</p>
+              <p>© 2026 Teppo Lappalainen</p>
             </motion.footer>
           </motion.main>
         </div>

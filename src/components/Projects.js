@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import project6Image from '../assets/project-6-image.png';
 import project2Image from '../assets/project-2-image.png';
 import project4Image from '../assets/project-4-image.png';
 import project5Image from '../assets/project-5-image.png';
@@ -8,6 +9,13 @@ import project7Image from '../assets/project-7-image.png';
 
 
 const projects = [
+  {
+    title: 'Real-Time Chat Application',
+    description: 'A modern, full-stack real-time chat application featuring instant messaging, image sharing, and real-time notifications. Built with React frontend and Node.js backend, using Socket.io for WebSocket communication, MongoDB for persistent message and user storage, and Cloudinary for image management.',
+    link: 'https://github.com/teppolap/chatapp',
+    image: project6Image,
+    technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JWT', 'Cloudinary', 'Vite', 'Zustand', 'TailwindCSS'],
+  },
   {
     title: 'E-Commerce Site | Topshelf Market',
     description: 'Built a E-Commerce Site with features secure authentication with NextAuth.js, dynamic product management using Next.js and Sanity CMS, a Redux-powered shopping cart, custom APIs for checkout, responsive design with Tailwind CSS and webhook support with Stripe for handling external events like payment confirmations.',
