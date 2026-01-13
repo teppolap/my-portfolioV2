@@ -31,13 +31,6 @@ const projects = [
     technologies: ['NextJS', 'JavaScript', 'Node.js', 'Mongoose', 'Express', 'MongoDB', 'Clerk', 'TailwindCSS'],
   },
   {
-    title: "Men's  Olympics Ice hockey Database 2022",
-    description: 'Database makes it easy to search for information about the team, players and matches they have played. The database is designed for sports professionals and anyone interested in the sport.',
-    link: 'https://student.labranet.jamk.fi/~AB7340/Tietokannat/Harjoituspalautukset/harjotustyo/Harjoitustyo.html',
-    image: project4Image, 
-    technologies: ['MYSQL', 'MariaDB'],
-  },
-  {
     title: 'My Web Portfolio',
     description: 'Source code for my newest portfolio',
     link: 'https://github.com/teppolap/my-portfolioV2',
