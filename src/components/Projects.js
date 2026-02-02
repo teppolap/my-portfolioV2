@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import project6Image from '../assets/project-6-image.png';
 import project2Image from '../assets/project-2-image.png';
-import project4Image from '../assets/project-4-image.png';
 import project5Image from '../assets/project-5-image.png';
 import project7Image from '../assets/project-7-image.png';
 

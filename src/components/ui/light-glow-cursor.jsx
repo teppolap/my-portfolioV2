@@ -9,14 +9,7 @@ function LightGlowCursor() {
       const cursorX = event.clientX;
       const cursorY = event.clientY;
 
-      setCursorPosition((prevPosition) => {
-        const speed = Math.sqrt(
-          Math.pow(cursorX - prevPosition.x, 2) + 
-          Math.pow(cursorY - prevPosition.y, 2)
-        );
-
-        return { x: cursorX, y: cursorY };
-      });
+      setCursorPosition({ x: cursorX, y: cursorY });
 
       setGlowClass('light-glow');
     };

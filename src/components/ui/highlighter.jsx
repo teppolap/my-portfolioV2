@@ -159,15 +159,17 @@ export function Highlighter({
       checkPositionRef.current = setTimeout(startChecking, 2000)
     }
 
+    const timeoutId = timeoutRef.current
+    const checkPositionId = checkPositionRef.current
     return () => {
       if (loadHandler) {
         window.removeEventListener('load', loadHandler)
       }
-      if (checkPositionRef.current) {
-        clearTimeout(checkPositionRef.current)
+      if (checkPositionId) {
+        clearTimeout(checkPositionId)
       }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
+      if (timeoutId) {
+        clearTimeout(timeoutId)
       }
       if (resizeObserverRef.current) {
         resizeObserverRef.current.disconnect()
