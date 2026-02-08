@@ -34,7 +34,7 @@ const projects = [
     description: 'Source code for my newest portfolio',
     link: 'https://github.com/teppolap/my-portfolioV2',
     image: project5Image, 
-    technologies: ['TailwindCSS', 'React'],
+    technologies: ['React', 'JavaScript', 'TailwindCSS'],
   },
 ];
 
