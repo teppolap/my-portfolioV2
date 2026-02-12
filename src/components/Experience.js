@@ -3,6 +3,15 @@ import { motion } from 'framer-motion';
 
 const experiences = [
   {
+    title: 'Software Developer Commission Worker',
+    company: 'MyHomesID',
+    period: '02/2026 - Now',
+    description: [
+      'Projects focus on company management features within a digital knowledge base, including development of a control panel and company portal tools',
+      'Technologies used primarily are Angular, TypeScript and AWS cloud services',
+    ],
+  },
+  {
     title: 'FullStack Developer Intern',
     company: 'MyHomesID',
     period: '03/2025-08/2025',
@@ -115,17 +124,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="my-12">
-      <motion.h1 
-        className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6"
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        Working Experience
-      </motion.h1>
-      
+    <div className="my-12">
       <div className="max-w-4xl mx-auto px-4">
         <motion.div 
           className="relative"
@@ -182,7 +181,7 @@ const Experience = () => {
           ))}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 

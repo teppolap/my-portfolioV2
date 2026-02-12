@@ -73,7 +73,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-          I’m a recent graduate with a strong foundation in Fullstack development and a <Highlighter action="underline" color="#f472b6" isView>{' '} clear goal: land a role as a Fullstack developer{' '}</Highlighter> where I can build polished, user-focused web experiences.
+          I’m a recent graduate with a strong foundation in Fullstack development and a <Highlighter action="underline" color="#f472b6" isView>clear goal: land a role as a Fullstack developer</Highlighter> where I can build polished, user-focused web experiences.
           </p>
         </motion.div>
         
@@ -82,7 +82,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-          <Highlighter action="underline" color="#34d399" isView>{' '}I work with modern web stacks{' '}</Highlighter>, building full-stack web applications from responsive user interfaces to scalable backend services and cloud deployments. I focus on writing <Highlighter action="underline" color="#38bdf8" isView>{' '}clean, maintainable code{' '}</Highlighter> and delivering web solutions that are reliable, performant, and easy to use.
+          I work with <Highlighter action="underline" color="#34d399" isView>modern web technologies to build full stack applications</Highlighter> from user interfaces to backend and cloud services. I also <Highlighter action="underline" color="#34d399" isView>develop my skills through personal projects</Highlighter> and use <Highlighter action="underline" color="#34d399" isView>generative AI daily</Highlighter> to support my software development workflow.
           </p>
         </motion.div>
         
@@ -91,7 +91,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-          <Highlighter action="underline" color="#c084fc" isView>{' '} I learn fast, communicate clearly, and thrive in collaborative teams{' '}</Highlighter> that ship thoughtfully crafted products.
+          <Highlighter action="underline" color="#c084fc" isView>I learn fast, communicate clearly and thrive in collaborative teams</Highlighter> that ship thoughtfully crafted products.
           </p>
         </motion.div>
 

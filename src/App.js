@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaMapPin } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaMapPin, FaEnvelope } from 'react-icons/fa';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
@@ -10,6 +10,9 @@ import profilePic from './assets/profile-pic.png';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
+  const [activeTab, setActiveTab] = useState('experience');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Track the active section on scroll
   useEffect(() => {
@@ -36,19 +39,27 @@ function App() {
     };
   }, []);
 
+  // Navbar scroll detection
+  useEffect(() => {
+    const handleNavScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleNavScroll);
+    return () => window.removeEventListener("scroll", handleNavScroll);
+  }, []);
 
-  const navItemClass = (section) => {
-    return activeSection === section
-      ? 'w-16 bg-slate-200'
-      : 'w-8 bg-slate-600 group-hover:w-16 group-hover:bg-slate-200 transition-all';
+  const navLinks = [
+    { name: 'About', path: '#about' },
+    { name: 'Experience', path: '#experience', onClick: () => setActiveTab('experience') },
+    { name: 'Projects', path: '#experience', onClick: () => setActiveTab('projects') },
+  ];
+
+  const isNavActive = (name) => {
+    if (name === 'About') return activeSection === 'about';
+    if (name === 'Experience') return activeSection === 'experience' && activeTab === 'experience';
+    if (name === 'Projects') return activeSection === 'experience' && activeTab === 'projects';
+    return false;
   };
-
-  const navTextClass = (section) => {
-    return activeSection === section
-      ? 'text-slate-200'
-      : 'text-slate-500 group-hover:text-slate-200 transition-colors';
-  };
-
 
   // Animation variants
   const pageVariants = {
@@ -94,31 +105,6 @@ function App() {
     },
   };
 
-  const navVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-        delayChildren: 0.8,
-      },
-    },
-  };
-
-  const navItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <motion.div 
       className="dark"
@@ -130,12 +116,144 @@ function App() {
       {/* Custom glowing cursor */}
       <LightGlowCursor />
 
+      {/* Fixed Top Navbar */}
+      <nav className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
+        isScrolled 
+          ? "bg-gray-900/80 shadow-lg backdrop-blur-lg py-3 md:py-4" 
+          : "bg-transparent py-4 md:py-6"
+      }`}>
+        {/* Logo / Name */}
+        <a href="#about" className="text-lg font-bold text-slate-200 tracking-tight hover:text-white transition-colors">
+          TL
+        </a>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          {navLinks.map((link, i) => (
+            <a 
+              key={i} 
+              href={link.path}
+              onClick={link.onClick}
+              className={`group flex flex-col gap-0.5 text-xs font-bold uppercase tracking-widest transition-colors ${
+                isNavActive(link.name) ? 'text-white' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {link.name}
+              <div className={`bg-cyan-400 h-0.5 transition-all duration-300 ${
+                isNavActive(link.name) ? 'w-full' : 'w-0 group-hover:w-full'
+              }`} />
+            </a>
+          ))}
+          <a 
+            href="/teppo-lappalainen-cv-en.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col gap-0.5 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors"
+          >
+            My Resume
+            <div className="bg-cyan-400 h-0.5 w-0 group-hover:w-full transition-all duration-300" />
+          </a>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 border-l border-slate-700 pl-3 ml-1">
+            <a 
+              href="https://www.linkedin.com/in/teppo-lappalainen" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={18} />
+            </a>
+            <a 
+              href="https://github.com/teppolap" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <FaGithub size={18} />
+            </a>
+          </div>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-slate-200"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`fixed top-0 left-0 w-full h-screen bg-gray-900 flex flex-col md:hidden items-center justify-center gap-8 transition-all duration-500 ${
+          isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
+        }`}>
+          <button 
+            className="absolute top-4 right-4 text-slate-200" 
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          {navLinks.map((link, i) => (
+            <a 
+              key={i} 
+              href={link.path} 
+              onClick={() => { if (link.onClick) link.onClick(); setIsMenuOpen(false); }}
+              className="text-lg font-medium text-slate-200 hover:text-white transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+
+          <a 
+            href="/teppo-lappalainen-cv-en.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-lg font-medium text-slate-200 hover:text-white transition-colors"
+          >
+            My Resume
+          </a>
+
+          <div className="flex items-center gap-6 mt-4">
+            <a 
+              href="https://www.linkedin.com/in/teppo-lappalainen" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-slate-200 hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a 
+              href="https://github.com/teppolap" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-slate-200 hover:text-white transition-colors"
+              aria-label="GitHub"
+            >
+              <FaGithub size={24} />
+            </a>
+          </div>
+        </div>
+      </nav>
+
       <div className="min-h-screen flex flex-col min-[1263px]:flex-row bg-gray-900 text-gray-100">
         {/* Centered Container */}
         <div className="flex flex-col min-[1263px]:flex-row min-[1263px]:justify-center min-[1263px]:items-start w-full min-[1263px]:w-4/5 mx-auto">
           {/* Left Side Header */}
           <motion.header 
-            className="w-full min-[1263px]:w-1/2 min-[1263px]:sticky min-[1263px]:top-0 min-[1263px]:flex min-[1263px]:flex-col min-[1263px]:justify-between min-[1263px]:py-12 bg-gray-900 flex-shrink-0"
+            className="w-full min-[1263px]:w-1/2 min-[1263px]:sticky min-[1263px]:top-0 min-[1263px]:flex min-[1263px]:flex-col min-[1263px]:justify-between pt-16 min-[1263px]:py-12 min-[1263px]:pt-16 bg-gray-900 flex-shrink-0"
             variants={headerVariants}
             initial="hidden"
             animate="visible"
@@ -175,115 +293,47 @@ function App() {
                 className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
                 variants={itemVariants}
               >
-                <FaMapPin className="inline-block mr-2" />
+                <FaMapPin className=" text-slate-300 inline-block mr-2" />
                 Jyväskylä, Finland
               </motion.p>
-              <motion.p 
-                className="mt-4 max-w-xs leading-normal text-slate-300 font-normal lg:max-w-none"
+
+              {/* Contact & availability block */}
+              <motion.div
+                className="mt-6 w-full max-w-xs lg:max-w-none text-center min-[1263px]:text-left"
                 variants={itemVariants}
               >
-                ICT engineering graduate specializing in full-stack development. Strong foundation, practical projects, and a mindset ready for real-world challenges.
-              </motion.p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  Get in touch
+                </p>
+                <div className="mt-3 flex flex-wrap items-center justify-center min-[1263px]:justify-start gap-4">
+                  <a
+                    href="mailto:teppo.lappalainen28@gmail.com"
+                    className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                    aria-label="Email"
+                  >
+                    <FaEnvelope size={20} />
+                    <span className="text-sm">Email</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/teppo-lappalainen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedin size={20} />
+                    <span className="text-sm">LinkedIn</span>
+                  </a>
+                </div>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  Looking for
+                </p>
+                <p className="mt-2 text-sm leading-normal text-slate-300">
+                Fullstack/web developer roles. Most familiar with React/Angular, Node.js, TypeScript and cloud (e.g. AWS). Open and excited to expand my skills. Open to internships and junior positions, on-site or hybrid in Finland or remote.
+                </p>
+              </motion.div>
             </div>
 
-            {/* Vertical Navigation (Hidden on Mobile) */}
-            <motion.nav 
-              className="hidden min-[1263px]:block mt-8 px-4 min-[1263px]:px-8"
-              variants={navVariants}
-            >
-              <ul className="space-y-4 flex lg:flex-col justify-center">
-                <motion.li variants={navItemVariants}>
-                  <a
-                    href="#about"
-                    className="group flex items-center transition-colors"
-                  >
-                    <span
-                      className={`nav-indicator mr-4 h-px transition-all ${navItemClass('about')}`}
-                    ></span>
-                    <span
-                      className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors ${navTextClass('about')}`}
-                    >
-                      About
-                    </span>
-                  </a>
-                </motion.li>
-                <motion.li variants={navItemVariants}>
-                  <a
-                    href="#experience"
-                    className="group flex items-center transition-colors"
-                  >
-                    <span
-                      className={`nav-indicator mr-4 h-px transition-all ${navItemClass('experience')}`}
-                    ></span>
-                    <span
-                      className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors ${navTextClass('experience')}`}
-                    >
-                      Experience
-                    </span>
-                  </a>
-                </motion.li>
-                <motion.li variants={navItemVariants}>
-                  <a
-                    href="#projects"
-                    className="group flex items-center transition-colors"
-                  >
-                    <span
-                      className={`nav-indicator mr-4 h-px transition-all ${navItemClass('projects')}`}
-                    ></span>
-                    <span
-                      className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors ${navTextClass('projects')}`}
-                    >
-                      Projects
-                    </span>
-                  </a>
-                </motion.li>
-              </ul>
-            </motion.nav>
-
-            {/* CTAs grouped so they stay centered on small screens */}
-            <motion.div 
-              className="mt-6 px-4 min-[1263px]:px-8 flex flex-col items-center gap-4 min-[1263px]:items-start"
-              variants={itemVariants}
-            >
-              <a
-                href="/teppo-lappalainen-cv-en.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-transparent text-white border border-white px-4 py-2 rounded-md transition-colors hover:bg-white hover:text-gray-900"
-              >
-                View Full Résumé
-              </a>
-              <div className="flex justify-center min-[1263px]:justify-start space-x-4 w-full">
-                <motion.a
-                  href="https://www.linkedin.com/in/teppo-lappalainen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-tech-text-color transition-none"
-                  aria-label="LinkedIn"
-                  whileHover={{ 
-                    scale: 1.2,
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <FaLinkedin size={24} />
-                </motion.a>
-                <motion.a
-                  href="https://github.com/teppolap"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-tech-text-color transition-none"
-                  aria-label="GitHub"
-                  whileHover={{ 
-                    scale: 1.2,
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <FaGithub size={24} />
-                </motion.a>
-              </div>
-            </motion.div>
           </motion.header>
 
           {/* Right Side Content */}
@@ -297,10 +347,74 @@ function App() {
               <About />
             </section>
             <section id="experience" className="mb-24">
-              <Experience />
-            </section>
-            <section id="projects">
-              <Projects />
+              {/* Tab buttons */}
+              <motion.div 
+                className="flex justify-center gap-2 sm:gap-4 p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+              >
+                <button 
+                  onClick={() => setActiveTab('experience')}
+                  className={`relative text-xl sm:text-2xl md:text-3xl font-bold tracking-tight px-3 sm:px-4 py-2 transition-colors duration-300 ${
+                    activeTab === 'experience' 
+                      ? 'text-slate-200' 
+                      : 'text-slate-500 hover:text-slate-300'
+                  }`}
+                >
+                  Working experience
+                  <motion.span
+                    className="absolute bottom-0 left-0 h-0.5 bg-cyan-400"
+                    initial={false}
+                    animate={{ scaleX: activeTab === 'experience' ? 1 : 0 }}
+                    style={{ originX: 0, width: '100%' }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+                </button>
+                <button 
+                  onClick={() => setActiveTab('projects')}
+                  className={`relative text-xl sm:text-2xl md:text-3xl font-bold tracking-tight px-3 sm:px-4 py-2 transition-colors duration-300 ${
+                    activeTab === 'projects' 
+                      ? 'text-slate-200' 
+                      : 'text-slate-500 hover:text-slate-300'
+                  }`}
+                >
+                  Hobby projects
+                  <motion.span
+                    className="absolute bottom-0 left-0 h-0.5 bg-cyan-400"
+                    initial={false}
+                    animate={{ scaleX: activeTab === 'projects' ? 1 : 0 }}
+                    style={{ originX: 0, width: '100%' }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+                </button>
+              </motion.div>
+
+              {/* Tab content */}
+              <AnimatePresence mode="wait">
+                {activeTab === 'experience' ? (
+                  <motion.div
+                    key="experience"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Experience />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="projects"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Projects />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </section>
             <motion.footer 
               className="text-center my-8"

@@ -104,17 +104,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="my-12">
-      <motion.h1 
-        className="text-3xl font-bold tracking-tight text-slate-200 sm:text-4xl text-center p-6"
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        Projects
-      </motion.h1>
-      
+    <div className="my-12">
       <motion.div 
         className="grid grid-cols-1 gap-10 md:gap-12 max-w-4xl mx-auto px-4"
         variants={containerVariants}
@@ -158,6 +148,7 @@ const Projects = () => {
               {/* Project Title */}
               <motion.h3 
                 className="text-xl md:text-2xl text-slate-300 font-normal mb-4 transition-colors group-hover:text-tech-text-color"
+                variants={titleVariants}
               >
                 {project.title}
               </motion.h3>
@@ -191,7 +182,7 @@ const Projects = () => {
           </motion.a>
         ))}
       </motion.div>
-    </section>
+    </div>
   );
 };
 
