@@ -111,18 +111,6 @@ const Experience = () => {
     },
   };
 
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
   return (
     <div className="my-12">
       <div className="max-w-4xl mx-auto px-4">
