@@ -8,7 +8,6 @@ import {
   SiTypescript, SiTailwindcss, SiExpress, SiMongodb,
   SiJavascript, SiPostman, SiOpenai
 } from 'react-icons/si';
-import { Highlighter } from './ui/highlighter';
 import { ReactComponent as CursorLogo } from '../assets/cursor.svg';
 import { ReactComponent as CopilotLogo } from '../assets/copilot-color.svg';
 
