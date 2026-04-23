@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fa';
 import { 
   SiTypescript, SiTailwindcss, SiExpress, SiMongodb,
-  SiJavascript, SiPostman, SiOpenai
+  SiJavascript, SiPostman, SiOpenai, SiPostgresql, SiDocker
 } from 'react-icons/si';
 import { ReactComponent as CursorLogo } from '../assets/cursor.svg';
 import { ReactComponent as CopilotLogo } from '../assets/copilot-color.svg';
@@ -160,8 +160,16 @@ const About = () => {
               <span className="text-gray-200 text-sm sm:text-base">MongoDB</span>
             </div>
             <div className="flex items-center gap-3">
+              <SiPostgresql className="shrink-0 text-xl sm:text-2xl text-[#4169E1]" />
+              <span className="text-gray-200 text-sm sm:text-base">PostgreSQL</span>
+            </div>
+            <div className="flex items-center gap-3">
               <FaGitAlt className="shrink-0 text-xl sm:text-2xl text-[#F05032]" />
               <span className="text-gray-200 text-sm sm:text-base">Git</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SiDocker className="shrink-0 text-xl sm:text-2xl text-[#2496ED]" />
+              <span className="text-gray-200 text-sm sm:text-base">Docker</span>
             </div>
             <div className="flex items-center gap-3">
               <FaAws className="shrink-0 text-xl sm:text-2xl text-[#FF9900]" />
