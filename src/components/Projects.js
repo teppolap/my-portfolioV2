@@ -5,9 +5,29 @@ import project6Image from '../assets/project-6-image.png';
 import project2Image from '../assets/project-2-image.png';
 import project5Image from '../assets/project-5-image.png';
 import project7Image from '../assets/project-7-image.png';
+import project8Image from '../assets/project-8-image.png';
 
 
 const projects = [
+  {
+    title: 'Legal Matter Tracker',
+    description:
+      'Full-stack app for lawyers to log matters, record time entries, and fetch an AI-generated work summary per matter. NestJS API with TypeORM migrations and idempotent seeding, JWT auth (Passport), React 19 + Redux Toolkit SPA behind Nginx, PostgreSQL, and Docker Compose. Summaries use the Google Gemini REST API with a plain-text fallback when no API key is set.',
+    link: 'https://github.com/teppolap/legal-matter-tracker',
+    image: project8Image,
+    technologies: [
+      'NestJS',
+      'TypeScript',
+      'React',
+      'Redux Toolkit',
+      'PostgreSQL',
+      'Docker',
+      'Nginx',
+      'TypeORM',
+      'JWT',
+      'Gemini API',
+    ],
+  },
   {
     title: 'Real-Time Chat Application',
     description: 'A modern, full-stack real-time chat application featuring instant messaging, image sharing, and real-time notifications. Built with React frontend and Node.js backend, using Socket.io for WebSocket communication, MongoDB for persistent message and user storage, and Cloudinary for image management.',
