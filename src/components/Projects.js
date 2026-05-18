@@ -12,7 +12,7 @@ const projects = [
   {
     title: 'Legal Matter Tracker',
     description:
-      'Full-stack app for lawyers to log matters, record time entries, and fetch an AI-generated work summary per matter. NestJS API with TypeORM migrations and idempotent seeding, JWT auth (Passport), React 19 + Redux Toolkit SPA behind Nginx, PostgreSQL, and Docker Compose. Summaries use the Google Gemini REST API with a plain-text fallback when no API key is set.',
+      'Fullstack app for lawyers to log matters, record time entries, and fetch an AI-generated work summary per matter. NestJS API with TypeORM migrations and idempotent seeding, JWT auth (Passport), React 19 + Redux Toolkit SPA behind Nginx, PostgreSQL, and Docker Compose. Summaries use the Google Gemini REST API with a plain-text fallback when no API key is set.',
     link: 'https://github.com/teppolap/legal-matter-tracker',
     image: project8Image,
     technologies: [
