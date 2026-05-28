@@ -100,9 +100,8 @@ const Projects = () => {
   };
 
   const imageVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      scale: 1,
       opacity: 1,
       transition: {
         duration: 0.5,
@@ -151,11 +150,10 @@ const Projects = () => {
             <div className="flex flex-col">
               {/* Project Image */}
               <motion.div className="relative mb-6">
-                <motion.img
+                <img
                   src={project.image}
                   alt={`Screenshot of ${project.title}`}
                   className="w-full h-64 md:h-80 object-cover rounded-lg"
-                  variants={imageVariants}
                 />
                 <motion.div
                   className="absolute top-4 right-4 text-tech-text-color bg-gray-900/70 p-2 rounded-full backdrop-blur-sm"

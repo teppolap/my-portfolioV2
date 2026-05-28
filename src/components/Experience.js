@@ -6,8 +6,16 @@ const experienceGroups = [
     company: 'MyHomesID',
     roles: [
       {
+        title: 'Software Developer',
+        period: '06/2026 - Present',
+        description: [
+          'Full-stack development using modern web technologies and cloud infrastructure',
+          'Contributing to the evolution of digital knowledge base and company management systems',
+        ],
+      },
+      {
         title: 'Fullstack Engineer Commission Worker',
-        period: '02/2026 - Current',
+        period: '02/2026 - 05/2026',
         description: [
           'Projects focus on company management features within a digital knowledge base, including development of a control panel and company portal tools',
           'Technologies used primarily are Angular, TypeScript and AWS cloud services',

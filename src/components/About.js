@@ -72,11 +72,7 @@ const About = () => {
           variants={paragraphVariants}
         >
           <p className="text-left text-gray-700 dark:text-gray-300 transition-opacity duration-700 text-sm sm:text-base md:text-lg lg:text-xl">
-          I’m a recent graduate with a strong foundation in Fullstack development and a{" "}
-          <span className="bg-gradient-to-r from-emerald-400/30 via-teal-400/20 to-cyan-300/20 rounded-md px-1 -mx-0.5">
-            clear goal: land a role as a Fullstack developer
-          </span>{" "}
-          where I can build polished, user-focused web experiences.
+          I’m a recent graduate with a strong foundation in Fullstack development{" "}
           </p>
         </motion.div>
         
